@@ -1,0 +1,47 @@
+=========================================================================================
+
+										HELPFUL LINKS
+
+=========================================================================================
+
+http://www.codeproject.com/Articles/19091/More-Texas-Holdem-Analysis-in-C-Part
+
+
+=========================================================================================
+
+										MONGODB EXAMPLES
+
+=========================================================================================
+
+db.handcracked.save({
+	username:"Example",
+	password:"password",
+	hands:[
+	"yourhand":["Aceheart","Kingclubs"],
+	"theirhand":["10clubs","10hearts"],
+	"board":["8heart","4clubs","2clubs","6diamond","10spades"]
+	]
+}
+
+
+
+pre-flop = [yourhand + board[0] + board[1] + board[2]] v/s [theirhand + board[0] + board[1] + board[2]]
+
+flop = [yourhand + board[0] + board[1] + board[2]] v/s [theirhand + board[0] + board[1] + board[2]]
+
+turn = [yourhand + board[0] + board[1] + board[2] + board[3]] v/s [theirhand + board[0] + board[1] + board[2] + board[3]]
+
+river = [yourhand + board[0] + board[1] + board[2] + board[3] + board[4]] v/s [theirhand + board[0] + board[1] + board[2] + board[3] + board[4]]
+
+
+=========================================================================================
+
+										COLOR PALETTE 
+
+=========================================================================================
+
+Lightgray = #DBDBDB
+Aqua = #76C7C6
+Orange = #E35C14
+Darker Gray = #7D7C78
+Real dark gray = #2E2E2E
