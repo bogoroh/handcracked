@@ -13,16 +13,43 @@ http://www.codeproject.com/Articles/19091/More-Texas-Holdem-Analysis-in-C-Part
 
 =========================================================================================
 
-db.handcracked.save({
-	username:"Example",
-	password:"password",
+db.hc.save({
+	username:"Alex",
+	password:"Saleh",
 	hands:[
+	{
+	"id":1,
 	"yourhand":["Aceheart","Kingclubs"],
 	"theirhand":["10clubs","10hearts"],
-	"board":["8heart","4clubs","2clubs","6diamond","10spades"]
-	]
-}
+	"board":["8heart","4clubs","2clubs","6diamond","10spades"]}],
+	[{
+	"id":2,
+	"yourhand":["Aceclub","Kingheart"],
+	"theirhand":["10clubs","10hearts"],
+	"board":["4heart","2clubs","1clubs","4diamond","2spades"]}]
+})
 
+
+db.hc.save({
+	username:"Alex",
+	password:"Saleh",
+	hands:[
+	{
+	"id":1,
+	"yourhand":["Aceheart","Kingclubs"],
+	"theirhand":["10clubs","10hearts"],
+	"board":["8heart","4clubs","2clubs","6diamond","10spades"]},
+	{
+	"id":2,
+	"yourhand":["Aceclub","Kingheart"],
+	"theirhand":["10clubs","10hearts"],
+	"board":["4heart","2clubs","1clubs","4diamond","2spades"]}]
+})
+
+db.hc.save({username:"Alex",password:"Saleh",hands:[{"id":1,"yourhand":["Aceheart","Kingclubs"],"theirhand":["10clubs","10hearts"],"board":["8heart","4clubs","2clubs","6diamond","10spades"]},{"id":2,"yourhand":["Aceclub","Kingheart"],"theirhand":["10clubs","10hearts"],"board":["4heart","2clubs","1clubs","4diamond","2spades"]}]})
+
+
+db.hc.update({username:"Alex"},{ $pull: { "hands" : { id: 1 } } })
 
 
 pre-flop = [yourhand + board[0] + board[1] + board[2]] v/s [theirhand + board[0] + board[1] + board[2]]

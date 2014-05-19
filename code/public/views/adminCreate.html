@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1> Handcracked </h1>
+<h2> Add a hand</h2>
+<form enctype="multipart/form-data" action="/admin/create/post" method="POST">
+	<h3>Your hand</h3>
+	<label for='username' >Username: </label>
+	<input type="text">
+	<label for='card1' >Card 1: </label>
+	<select id="card1" name="c1">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="c1suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+	<br />
+		<label for='card2' >Card 2: </label>
+	<select id="card2" name="c2">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="c2suit2">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamond</option>
+	  <option value="spade">Spade</option>
+	</select>
+	<br />
+	<h3>Their hand </h3>
+	<label for='card1' >Card 1: </label>
+	<select id="card1" name="theirc1">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="theirc1suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+	<br />
+	<label for='card2' >Card 2: </label>
+	<select id="card2" name="theirc2">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="theirc2suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+
+	<h3>Board cards</h3>
+	<label for='card1' >Card 1: </label>
+	<select id="card1" name="bc1">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="bc1suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+	<br />
+		<label for='card2' >Card 2: </label>
+	<select id="card2" name="bc2">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="bc2suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+	<br />
+		<label for='card3' >Card 3: </label>
+	<select id="card3" name="bc3">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="bc3suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+		<br />
+		<label for='card4' >Card 4: </label>
+	<select id="card4" name="bc4"> 
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="bc4suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+	<br />
+		<label for='card5' >Card 5: </label>
+	<select id="card5" name="bc5">
+	  <option value="ace">Ace</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="jack">Jack</option>
+	  <option value="queen">Queen</option>
+	  <option value="king">King</option>
+	</select>
+	<select name="bc5suit">
+	  <option value="heart">Heart</option>
+	  <option value="club">Club</option>
+	  <option value="diamond">Diamon</option>
+	  <option value="spade">Spade</option>
+	</select>
+	<br />
+	<input type="submit" name="submit" value="Save">
+</form>
+</body>
+</html>
