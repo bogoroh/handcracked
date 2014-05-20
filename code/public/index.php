@@ -1,12 +1,10 @@
 <?php
-//$mb = $mongo->selectDb("handcracked")->selectCollection("hc");
 require_once '../vendor/twig/twig/lib/Twig/Autoloader.php';
 Twig_Autoloader::register();
 
 $loader = new Twig_Loader_Filesystem('views/');
 $twig = new Twig_Environment($loader, array(
 ));
-
 
 $f3 = require('../lib/base.php');
 
@@ -15,18 +13,13 @@ $user=new DB\Mongo\Mapper($db,'hc');
 
 $f3->route('GET /',
     function() use ($user) {
-        //echo 'Hello, world!';
-        $test = $user->find(array());
-        //echo $test[1]['username'];
-        //echo $test[0]['hands']['yourhand'][0];
+        echo "Please start with /admin or /user";
     }
 );
 
 $f3->route('GET /admin',
     function() use ($user,$twig){
-        //echo 'Hello, This is the admin page';
         $test = $user->find(array());
-       // var_dump($test['2']['hands']);
         $template = $twig->loadTemplate('adminHome.html');
         echo $template->render(array('username' =>  $test));
     }
@@ -34,14 +27,14 @@ $f3->route('GET /admin',
 
 $f3->route('GET /admin/delete/@username/@id',
     function() use ($f3,$user,$twig) {
-        $username = $f3->get('PARAMS.username');
+        $username = strtolower($f3->get('PARAMS.username'));
         $handid = $f3->get('PARAMS.id');
-       // $test = $user->update(array("username" => $username, $pull: { "hands" : { id: $handid } };
         
+
+        /// ???????????????????????????????????????????????????????????????????
         //db.hc.update({username:"Alex"},{ $pull: { "hands" : { id: 1 } } })
+        // ????????????????????????????????????????????????????????????????????????
 
-
-       // var_dump($test['2']['hands']);
         $template = $twig->loadTemplate('adminHome.html');
          echo $template->render(array('username' => $test));
     }
@@ -55,9 +48,9 @@ $f3->route('GET /admin/create',
 );
 
 $f3->route('POST /admin/create/post',
-    function() use ($f3) {
+    function() use ($f3,$user,$twig) {
         
-
+    $username = strtolower(F3::get('REQUEST.username'));
     // Variables for their hand
     $tcard1 = F3::get('REQUEST.c1'); 
     $tcard1suit = F3::get('REQUEST.c1suit');
@@ -106,6 +99,8 @@ $f3->route('POST /admin/create/post',
     $boardcard4 = $bcard4 . $bcard4suit;
     $boardcard5 = $bcard5 . $bcard5suit;
 
+
+    //$handnumber = $??? ++
     // arrary that has to go in board
     //echo $boardcard1;
     //echo $boardcard2;
@@ -115,22 +110,74 @@ $f3->route('POST /admin/create/post',
     $boardarray = array( $boardcard1, $boardcard2, $boardcard3, $boardcard4, $boardcard5);
 
 
+    //$intcount = $user->count(array("username" => $username));
+    //var_dump($intcount);
+    $randomint = rand(0,10000);
+    $fullarray = array("id" => $randomint,  "yourhand" => $theirarray, "theirhand" => $oparray, "board" => $boardarray);
+    
+
+
+    var_dump($fullarray);
+
+    //????????????????????????????????????????????????????????????????????????????????????
+    //????     $user->update("{ 'username' => $username },{ \$push: { hands: $fullarray} }")
+    //???? ????????????????????????????????????????????????????????????????????????????????
+
+
+    //$f3->reroute("/admin");
     // Now i need to insert these arrarys in mongo DB
 
     }
 );
 
-$f3->route('GET /user/@user/@id',
+$f3->route('GET /admin/edit/@user/@id',
     function() use ($f3,$user,$twig) {
         $userparam  = $f3->get('PARAMS.user').' This is the user.';
-        //echo $f3->get('PARAMS.id').' This is the id';
-        $test2 = $user->find(array());
-        $test = $user->find(array("username" =>$userparam ));
-        var_dump($test2);
-        $template = $twig->loadTemplate('adminTemplate.html');
-        echo $template->render(array('user' =>  $test));
+        $idparam = $f3->get('PARAMS.id').' This is the id';
+        //$test2 = $user->find(array());
+
+        // Need to find by username "username" =>$userparam & $idparam
+
+        $template = $twig->loadTemplate('adminEdit.html');
+        echo $template->render(array());
     }
 );
+
+$f3->route('GET /user/@user/@id',
+    function() use ($f3,$user,$twig) {
+        $userparam  = strtolower($f3->get('PARAMS.user'));
+        $idparam = $f3->get('PARAMS.id');
+        $handarray = $user->find(array("username" => $userparam,"hands.id" => intval($idparam)));
+        $hand =  $handarray[0]['hands'];
+
+        
+        //echo "This had to be templated";
+        // Need to find by username "username" =>$userparam & $idparam
+        //var_dump($test2);
+        $template = $twig->loadTemplate('adminTemplate.html');
+        echo $template->render(array('hands' =>  $hand));
+    }
+);
+
+$f3->route("POST /calc/pre",
+    function() use ($f3){
+        // Calc preflop
+
+        $json = $f3->get("BODY");
+        //$c1 = $f3->get("POST.y1");
+        //$c2 = $posting ->y2; 
+        //$c1 = $_POST["y1"];
+        $c2 = 10; 
+
+        print_r($json[0]);
+
+        $ourwin = $c2;
+        $theirwin = 90;
+
+        $winarray = array("value" => $ourwin, "value2" => $theirwin);
+        //print_r(json_encode($winarray));
+        // echo "expression";
+    });
 
 
 $f3->run();

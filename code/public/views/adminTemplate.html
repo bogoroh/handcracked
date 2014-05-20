@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Handcracked's hand</title>
+	<title>Handcracked's history viewer</title>
 </head>
 <body>
- <h1> {{user.username}}</h1>
+ <h1> Handcrack's crackin hand</h1>
+	<h2> Your Hand: </h2>
+	 {{hands[0]['yourhand'][0]}} and {{hands[0]['yourhand'][1]}}
+	
+	<h3>Equity: </h3>
+
+	<h2> Their Hand: </h2>
+	 {{hands[0]['theirhand'][0]}} and {{hands[0]['theirhand'][1]}}
+
+	<h3>Equity: </h3>
+
+	<h2> On a board of </h2>
+	{{hands[0]['board']['0']}}, {{hands[0]['board']['1']}}, {{hands[0]['board']['2']}},{{hands[0]['board']['3']}} and {{hands[0]['board']['4']}}
+
+	<br>
+	<button class="preflop">Pre-Flop</button>
+	<button>Flop</button>
+	<button>Turn</button>
+	<button>River</button>
+
+	<br>
+	<button onclick="location.href='/admin'">
+     Go back</button>
+<script type="text/javascript" src="/jquery.js"></script>
+<script type="text/javascript" src="/main.js"></script>
 </body>
 </html>

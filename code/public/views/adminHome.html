@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Handcracked's Admin home page</title>
+</head>
+<body>
+	<h1> Handcracked Admin page  </h1>
+	{% for item in username %}
+<h2>{{ item.username }}</h2>
+	<ul>
+	{% for hand in item.hands %}
+	<li><a href='/user/{{item.username}}/{{hand.id}}'> {{hand.yourhand[0]}}{{hand.yourhand[1]}} v/s {{hand.theirhand[0]}}{{hand.theirhand[1]}} </a> <a class="adminA" href='/admin/edit/{{item.username}}/{{hand.id}}'> Edit </a><a class="adminA"href="/admin/delete/{{item.username}}/{{hand.id}}"> Delete </a></li>
+	{% endfor %}
+</ul>
+	{% endfor %}
+	<a href='/admin/create'> Add a card history </a>
+</body>
+</html>
+
+
+	<!-- <ul>
+	{% for hand in item.username %}
+		<li>{{hand.yourhand[0]}}{{hand.yourhand[1]}} v/s {{hand.theirhand[0]}}{{hand.theirhand[1]}}</li>
+	{% endfor %}
+	<ul> -->
