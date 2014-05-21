@@ -6,23 +6,23 @@
 <body>
  <h1> Handcrack's crackin hand</h1>
 	<h2> Your Hand: </h2>
-	 {{hands[0]['yourhand'][0]}} and {{hands[0]['yourhand'][1]}}
+	 <span id="yc1" data-cardForm="{{hands[0]['yourhand'][0]}}">{{hands[0]['yourhand'][0]}}</span> and <span id="yc2" data-cardForm="{{hands[0]['yourhand'][1]}}">{{hands[0]['yourhand'][1]}}</span> 
 	
-	<h3>Equity: </h3>
+	<h3>Equity: </h3> <div id="yourwin"></div>%
 
 	<h2> Their Hand: </h2>
-	 {{hands[0]['theirhand'][0]}} and {{hands[0]['theirhand'][1]}}
+	 <span id="yc3" data-cardForm="{{hands[0]['theirhand'][0]}}">{{hands[0]['theirhand'][0]}}</span> and <span id="yc4" data-cardForm="{{hands[0]['theirhand'][1]}}"> {{hands[0]['theirhand'][1]}} </span>
 
-	<h3>Equity: </h3>
+	<h3>Equity: </h3> <div id="theirwin"></div>%
 
 	<h2> On a board of </h2>
-	{{hands[0]['board']['0']}}, {{hands[0]['board']['1']}}, {{hands[0]['board']['2']}},{{hands[0]['board']['3']}} and {{hands[0]['board']['4']}}
+	<span id="bc1" data-cardForm="{{hands[0]['board']['0']}}">{{hands[0]['board']['0']}}</span>, <span id="bc2" data-cardForm="{{hands[0]['board']['1']}}">{{hands[0]['board']['1']}}</span>,  <span id="bc3" data-cardForm="{{hands[0]['board']['2']}}">{{hands[0]['board']['2']}}</span>, <span id="bc4" data-cardForm="{{hands[0]['board']['3']}}">{{hands[0]['board']['3']}}</span> and  <span id="bc5" data-cardForm="{{hands[0]['board']['4']}}">{{hands[0]['board']['4']}}</span>
 
 	<br>
 	<button class="preflop">Pre-Flop</button>
-	<button>Flop</button>
-	<button>Turn</button>
-	<button>River</button>
+	<button class="flop">Flop</button>
+	<button class="turn">Turn</button>
+	<button class="river">River</button>
 
 	<br>
 	<button onclick="location.href='/admin'">

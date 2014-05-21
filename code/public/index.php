@@ -159,25 +159,96 @@ $f3->route('GET /user/@user/@id',
     }
 );
 
-$f3->route("POST /calc/pre",
+$f3->route("GET /calc/pre/@y1/@y2/@y3/@y4",
     function() use ($f3){
         // Calc preflop
 
-        $json = $f3->get("BODY");
-        //$c1 = $f3->get("POST.y1");
+        // Get the params for preflop
+        $y1 = $f3->get('PARAMS.y1');
+        $y2 = $f3->get('PARAMS.y2');
+        $y3 = $f3->get('PARAMS.y3');
+        $y4 = $f3->get('PARAMS.y4');
+        // If you have pocket AA's
+
+        $c1 = 0;
+        if (
+            $y1  == "Aceheart" && $y2 == "Acediamond" && $y3 == "Kingheart" && $y4 == "Kingspades" ||  
+            $y1 == "Aceheart" && $y2 == "Acediamond" && $y3 == "Kingheart" && $y4 == "Kingdiamond" ||  
+            $y1 == "Aceheart" && $y2 == "Acediamond" && $y3 == "Kingheart" && $y4 == "Kingclub" || 
+            $y1 == "Aceheart" && $y2 == "Acediamond" && $y3 == "Kingclub" && $y4 == "Kingspade" || 
+            $y1 == "Aceheart" && $y2 == "Acediamond" && $y3 == "Kingclub" && $y4 == "Kingdiamond" || 
+            $y1 == "Aceheart" && $y2 == "Acediamond" && $y3 == "Kingspade" && $y4 == "Kingdiamond" ||
+            $y1 == "Aceheart" && $y2 == "Aceclub" && $y3 == "Kingheart" && $y4 == "Kingspades" || 
+            $y1 == "Aceheart" && $y2 == "Aceclub" && $y3 == "Kingheart" && $y4 == "Kingdiamond" || 
+            $y1 == "Aceheart" && $y2 == "Aceclub" && $y3 == "Kingheart" && $y4 == "Kingclub" ||
+            $y1 == "Aceheart" && $y2 == "Aceclub" && $y3 == "Kingclub" && $y4 == "Kingspade" ||
+            $y1 == "Aceheart" && $y2 == "Aceclub" && $y3 == "Kingclub" && $y4 == "Kingdiamond" ||
+            $y1 == "Aceheart" && $y2 == "Aceclub" && $y3 == "Kingspade" && $y4 == "Kingdiamond" || 
+            $y1 == "Aceheart" && $y2 == "Acespade"  && $y3 == "Kingheart" && $y4 == "Kingspades" ||
+            $y1 == "Aceheart" && $y2 == "Acespade"  && $y3 == "Kingheart" && $y4 == "Kingdiamond" || 
+            $y1 == "Aceheart" && $y2 == "Acespade"  && $y3 == "Kingheart" && $y4 == "Kingclub" || 
+            $y1 == "Aceheart" && $y2 == "Acespade"  && $y3 == "Kingclub" && $y4 == "Kingspade" ||
+            $y1 == "Aceheart" && $y2 == "Acespade"  && $y3 == "Kingclub" && $y4 == "Kingdiamond" || 
+            $y1 == "Aceheart" && $y2 == "Acespade"  && $y3 == "Kingspade" && $y4 == "Kingdiamond" || 
+            $y1 == "Aceclub" && $y2 == "Acespade"  && $y3 == "Kingheart" && $y4 == "Kingspades" || 
+            $y1 == "Aceclub" && $y2 == "Acespade"  && $y3 == "Kingheart" && $y4 == "Kingdiamond" ||
+            $y1 == "Aceclub" && $y2 == "Acespade"  && $y3 == "Kingheart" && $y4 == "Kingclub" ||
+            $y1 == "Aceclub" && $y2 == "Acespade"  && $y3 == "Kingclub" && $y4 == "Kingspade" ||
+            $y1 == "Aceclub" && $y2 == "Acespade"  && $y3 == "Kingclub" && $y4 == "Kingdiamond" ||
+            $y1 == "Aceclub" && $y2 == "Acespade"  && $y3 == "Kingspade" && $y4 == "Kingdiamond" ||
+            $y1 == "Aceclub" && $y2 == "Acediamond"  && $y3 == "Kingheart" && $y4 == "Kingspades" ||
+            $y1 == "Aceclub" && $y2 == "Acediamond"  && $y3 == "Kingheart" && $y4 == "Kingdiamond" || 
+            $y1 == "Aceclub" && $y2 == "Acediamond"  && $y3 == "Kingheart" && $y4 == "Kingclub" || 
+            $y1 == "Aceclub" && $y2 == "Acediamond"  && $y3 == "Kingclub" && $y4 == "Kingspade" ||
+            $y1 == "Aceclub" && $y2 == "Acediamond"  && $y3 == "Kingclub" && $y4 == "Kingdiamond" ||
+            $y1 == "Aceclub" && $y2 == "Acediamond"  && $y3 == "Kingspade" && $y4 == "Kingdiamond" ||
+            $y1 == "Acespade" && $y2 == "Acediamond"  && $y3 == "Kingheart" && $y4 == "Kingspades" ||
+            $y1 == "Acespade" && $y2 == "Acediamond"  && $y3 == "Kingheart" && $y4 == "Kingdiamond" || 
+            $y1 == "Acespade" && $y2 == "Acediamond"  && $y3 == "Kingheart" && $y4 == "Kingclub" || 
+            $y1 == "Acespade" && $y2 == "Acediamond" && $y3 == "Kingclub" && $y4 == "Kingspade" ||
+            $y1 == "Acespade" && $y2 == "Acediamond"  && $y3 == "Kingclub" && $y4 == "Kingdiamond" ||
+            $y1 == "Acespade" && $y2 == "Acediamond"  && $y3 == "Kingspade" && $y4 == "Kingdiamond") {
+            $c1 = 81;
+        } elseif ($y1  == "Aceheart" && $y2 == "Kingclubs" && $y3 == "10clubs" && $y4 == "10hearts" ) {
+            $c1 = 45;
+        }
+
         //$c2 = $posting ->y2; 
         //$c1 = $_POST["y1"];
-        $c2 = 10; 
 
-        print_r($json[0]);
+        //print_r($y1);
 
-        $ourwin = $c2;
-        $theirwin = 90;
+        $ourwin = $c1;
+        $theirwin = 100 - $ourwin;
 
         $winarray = array("value" => $ourwin, "value2" => $theirwin);
-        //print_r(json_encode($winarray));
+        print_r(json_encode($winarray));
         // echo "expression";
     });
 
+$f3->route("GET /calc/flop/@y1/@y2/@y3/@y4/@y5/@y6",
+    function() use ($f3){
+        // Calc preflop
+        print_r("Hi");
+        // Get the params for preflop
+        $y1 = $f3->get('PARAMS.y1');
+        $y2 = $f3->get('PARAMS.y2');
+        $y3 = $f3->get('PARAMS.y3');
+        $y4 = $f3->get('PARAMS.y4');
+        $bc1 = $f3->get('PARAMS.y5');
+        $bc2 = $f3->get('PARAMS.y6');
+        $bc3 = $f3->get('PARAMS.y7');
+        // See on the flop
+        $c1 = 0;
+        if ($bc1 == "10clubs" || $bc1 == "10hearts" || $bc1 == "10diamonds" || $bc1 == "10hearts" || $bc2 == "10clubs" || $bc2 == "10hearts" || $bc2 == "10diamonds" || $bc2 == "10hearts" || $bc3 == "10clubs" || $bc3 == "10hearts" || $bc3 == "10diamonds" || $bc3 == "10hearts"  ) {
+            $c1 = 8;
+        };
+        $ourwin = $c1;
+        $theirwin = 100 - $ourwin;
+
+        $winarray = array("value" => $ourwin, "value2" => $theirwin);
+        print_r(json_encode($winarray));
+    }
+);
 
 $f3->run();

@@ -3,23 +3,55 @@
 
 		
 // })
-	$(".preflop").click(function(){
-		console.log('preflop')
-		$.ajax({
-			url: "/calc/pre",
-			type: 'POST',
-			data:{
-				y1:10,
-				y2:10	
-			},
-			dataType: "json",
-			processData:false,
-			contentType:'application/json',
-			complete: function(response){
-				console.log(response);
-			}
-		})
-	});
+$(".preflop").click(function(){
+	console.log('preflop')
+	var y1 = $('#yc1').attr("data-cardForm");
+	var y2 = $('#yc2').attr("data-cardForm");
+	var y3 = $('#yc3').attr("data-cardForm");
+	var y4 = $('#yc4').attr("data-cardForm");
+
+	var query = "/calc/pre/" + y1 + "/" + y2 + "/" + y3 + "/" + y4 
+	$.ajax({
+		url: query,
+		type: 'GET',
+		complete: function(response){
+			console.log(response.responseText)
+
+			var numbers = $.parseJSON(response.responseText)
+			$("#yourwin").html(numbers.value)
+			$("#theirwin").html(numbers.value2)
+			//$("#yourwin").html(response.responseText)
+			//$("#yourwin").html(response.responseText)
+		}
+	})
+});
+
+$(".flop").click(function(){
+	console.log('flop')
+	var y1 = $('#yc1').attr("data-cardForm");
+	var y2 = $('#yc2').attr("data-cardForm");
+	var y3 = $('#yc3').attr("data-cardForm");
+	var y4 = $('#yc4').attr("data-cardForm");
+	var y5 = $('#bc1').attr("data-cardForm");
+	var y6 = $('#bc2').attr("data-cardForm");
+	var y7 = $('#bc3').attr("data-cardForm");
+	console.log(y1 + y2 + y3 +y4 +y5 + y6 + y7)
+	
+	var query = "/calc/flop/" + y1 + "/" + y2 + "/" + y3 + "/" + y4 + "/" + y5 + "/" + y6 
+	$.ajax({
+		url: query,
+		type: 'GET',
+		complete: function(response){
+			console.log(response.responseText)
+
+			var numbers = $.parseJSON(response.responseText)
+			$("#yourwin").html(numbers.value)
+			$("#theirwin").html(numbers.value2)
+			//$("#yourwin").html(response.responseText)
+			//$("#yourwin").html(response.responseText)
+		}
+	})
+});
 
 // y1: $('#yc1').attr(data-cardForm),
 // 				y2: $('#yc2').attr(data-cardForm),
