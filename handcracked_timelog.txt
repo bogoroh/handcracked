@@ -1,3 +1,17 @@
 Monday, 12 May 2014 (Lab) - 3hours
 Worked on the PRD,Wireframes, Design and color palette
 
+Wednesday, 14 May 2014 - 5 Hours
+Did some routing and did research about the fat free framework.
+
+Friday, 16 May 2014 - 6 Hours
+Started working on HTML and fixed some errors
+
+Monday, 18 May 2014 - 6 Hours
+Started working on some JSON and JQUERY
+
+Tuesday, 19 May 2014 - 4 Hours
+Trying to get my JSON working & Mongo working
+
+Wednesday, 21 May 2014 - 4 Hours
+Trying to get my JSON working
