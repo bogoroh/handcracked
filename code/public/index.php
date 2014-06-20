@@ -39,8 +39,10 @@ $f3->route('GET /admin/delete/@username/@id',
 
         $p = array();
         $p['hands'] = array('id'=>1);
-        var_dump($p);
-        $user->update($f,array('$pull'=>$p));
+        //var_dump($p);
+        // $user->update($f,array('$pull'=>$p));
+
+        $user->update( $f, array('$pull' =>$p ));
         exit();
         //$template = $twig->loadTemplate('adminHome.html');
          //echo $template->render(array('username' => $test));
@@ -257,5 +259,4 @@ $f3->route("GET /calc/flop/@y1/@y2/@y3/@y4/@y5/@y6",
         print_r(json_encode($winarray));
     }
 );
-
 $f3->run();
